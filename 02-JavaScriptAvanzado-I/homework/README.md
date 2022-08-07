@@ -13,28 +13,28 @@ var a = 5;
 var b = 10;
 var c = function(a, b, c) {
   var x = 10;
-  console.log(x);
-  console.log(a);
+  console.log(x); // Imprime 10
+  console.log(a); // Imprime 8 
   var f = function(a, b, c) {
     b = a;
-    console.log(b);
-    b = c;
-    var x = 5;
+    console.log(b); //Imprime 8
+    b = c; 
+    var x = 5; 
   }
   f(a,b,c);
-  console.log(b);
+  console.log(b); //Imprime 9
 }
 c(8,9,10);
-console.log(b);
-console.log(x);
+console.log(b); //Imorime 10
+console.log(x); //Imprime 1
 ```
 
 ```javascript
-console.log(bar);
-console.log(baz);
-foo();
+console.log(bar); // undefined
+console.log(baz); // undefined
+foo(); // 'Hola!'
 function foo() { console.log('Hola!'); }
-var bar = 1;
+var bar = 1; 
 baz = 2;
 ```
 
@@ -43,19 +43,19 @@ var instructor = "Tony";
 if(true) {
     var instructor = "Franco";
 }
-console.log(instructor);
+console.log(instructor); // "Franco"
 ```
 
 ```javascript
 var instructor = "Tony";
-console.log(instructor);
+console.log(instructor); // "Tony"
 (function() {
    if(true) {
       var instructor = "Franco";
-      console.log(instructor);
+      console.log(instructor); // "Franco"
    }
 })();
-console.log(instructor);
+console.log(instructor); // "Tony"
 ```
 
 ```javascript
@@ -64,33 +64,33 @@ let pm = "Franco";
 if (true) {
     var instructor = "The Flash";
     let pm = "Reverse Flash";
-    console.log(instructor);
-    console.log(pm);
+    console.log(instructor); // The Flash
+    console.log(pm); // Reverse Flash
 }
-console.log(instructor);
-console.log(pm);
+console.log(instructor); //The Flash
+console.log(pm); // Franco
 ```
 ### Coerción de Datos
 
 ¿Cuál crees que será el resultado de la ejecución de estas operaciones?:
 
 ```javascript
-6 / "3"
-"2" * "3"
-4 + 5 + "px"
-"$" + 4 + 5
-"4" - 2
-"4px" - 2
-7 / 0
-{}[0]
-parseInt("09")
-5 && 2
-2 && 5
-5 || 0
-0 || 5
-[3]+[3]-[10]
-3>2>1
-[] == ![]
+6 / "3" // 2
+"2" * "3" // 6
+4 + 5 + "px" // 9 px
+"$" + 4 + 5 // $ 9
+"4" - 2 // 2
+"4px" - 2 // NaN
+7 / 0 // Infinite
+{}[0] // 
+parseInt("09") // 09
+5 && 2 // 2 
+2 && 5 // 5
+5 || 0 // 5
+0 || 5 // 0
+[3]+[3]-[10] // [3][3][10]
+3>2>1 // true
+[] == ![] // true
 ```
 
 > Si te quedó alguna duda repasá con [este artículo](http://javascript.info/tutorial/object-conversion).
@@ -102,8 +102,8 @@ parseInt("09")
 
 ```javascript
 function test() {
-   console.log(a);
-   console.log(foo());
+   console.log(a); // undefined Porque todavia no esta definido a
+   console.log(foo()); // 2 Porque hace un hoisting de foo y retorna 2
 
    var a = 1;
    function foo() {
@@ -111,7 +111,7 @@ function test() {
    }
 }
 
-test();
+test(); 
 ```
 
 Y el de este código? :
@@ -127,7 +127,7 @@ function getFood(food) {
     return snack;
 }
 
-getFood(false);
+getFood(false); //undefined porque al ser false deja sin parametro a getFood
 ```
 
 
@@ -147,11 +147,11 @@ var obj = {
    }
 };
 
-console.log(obj.prop.getFullname());
+console.log(obj.prop.getFullname()); // Aurelio de La Rosa Porque accede a la direccion de Prop
 
-var test = obj.prop.getFullname;
+var test = obj.prop.getFullname; // hace un pase por referencia del metodo get fullName para el global
 
-console.log(test());
+console.log(test()); // Juan Perez porque copia el metodo, y lo ejecuta en el global
 ```
 
 ### Event loop
@@ -160,10 +160,10 @@ Considerando el siguiente código, ¿Cuál sería el orden en el que se muestra 
 
 ```javascript
 function printing() {
-   console.log(1);
-   setTimeout(function() { console.log(2); }, 1000);
-   setTimeout(function() { console.log(3); }, 0);
-   console.log(4);
+   console.log(1);// 1
+   setTimeout(function() { console.log(2); }, 1000);// 4
+   setTimeout(function() { console.log(3); }, 0);// 3
+   console.log(4);// 2
 }
 
 printing();
