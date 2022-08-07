@@ -160,10 +160,10 @@ Considerando el siguiente código, ¿Cuál sería el orden en el que se muestra 
 
 ```javascript
 function printing() {
-   console.log(1);// 1
-   setTimeout(function() { console.log(2); }, 1000);// 4
-   setTimeout(function() { console.log(3); }, 0);// 3
-   console.log(4);// 2
+   console.log(1);// 1 porque es la primera ejecucion de
+   setTimeout(function() { console.log(2); }, 1000);// 4 imprime ultimo ya que se le asigno mas tiempo de espera a ejecutarse
+   setTimeout(function() { console.log(3); }, 0);// 3 se ejecuta en segundo plano pero es el primero en ejecutarse una vez terminada la linea de ejecucion principal
+   console.log(4);// 2 porque lo sigue ejecutando en primer plano 
 }
 
 printing();
