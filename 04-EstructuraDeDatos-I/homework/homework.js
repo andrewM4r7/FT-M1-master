@@ -55,7 +55,6 @@ function Queue() {
   this.dequeue = dequeue;
   this.size = size;
 
-  
 
   function enqueue(element) {
       this.arr.push(element);
